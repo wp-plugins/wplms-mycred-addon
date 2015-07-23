@@ -1,0 +1,660 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPLMS MyCred ADDON v1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-12-03 07:14:09+0000\n"
+"Last-Translator: admin <asd@awd.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes/class.init.php:29
+#: includes/myCRED-addon-wplms.php:156
+#@ wplms-mycred
+msgid "Points"
+msgstr ""
+
+#: includes/class.init.php:86
+#@ vibe
+msgid "Purchase points to take this course"
+msgstr ""
+
+#: includes/class.init.php:86
+#@ wplms-mycred
+msgid "Add Points"
+msgstr ""
+
+#: includes/class.init.php:95
+#@ wplms-mycred
+msgid "MyCred points options for WPLMS Learning Management"
+msgstr ""
+
+#: includes/class.init.php:116
+#: includes/class.init.php:145
+#@ vibe-customtypes
+msgid "MyCred Points"
+msgstr ""
+
+#: includes/class.init.php:117
+#@ vibe-customtypes
+msgid "MyCred Points required to take this course."
+msgstr ""
+
+#: includes/class.init.php:122
+#@ vibe-customtypes
+msgid "Subscription "
+msgstr ""
+
+#: includes/class.init.php:123
+#@ vibe-customtypes
+msgid "Enable subscription mode for this Course"
+msgstr ""
+
+#: includes/class.init.php:135
+#@ vibe-customtypes
+msgid "Subscription Duration"
+msgstr ""
+
+#: includes/class.init.php:136
+#@ vibe-customtypes
+msgid "Duration for Subscription Products (in "
+msgstr ""
+
+#: includes/class.init.php:160
+#@ vibe
+msgid "per"
+msgstr ""
+
+#: includes/class.init.php:194
+#@ wplms-mycred
+msgid "Security check Failed."
+msgstr ""
+
+#: includes/class.init.php:199
+#@ wplms-mycred
+msgid "Incorrect Course"
+msgstr ""
+
+#: includes/class.init.php:208
+#@ wplms-mycred
+msgid "Not enough balance"
+msgstr ""
+
+#: includes/class.init.php:225
+#@ wplms-mycred
+msgid "Please set subscription duration or disable subscription"
+msgstr ""
+
+#: includes/class.init.php:245
+#@ wplms-mycred
+msgid "Student subscibed for course"
+msgstr ""
+
+#: includes/class.init.php:247
+#@ wplms-mycred
+msgid "Student Subscribed to course , ends on "
+msgstr ""
+
+#: includes/class.init.php:253
+#@ vibe
+msgid "Student subscribed for course "
+msgstr ""
+
+#: includes/class.init.php:254
+#@ vibe
+msgid "Student "
+msgstr ""
+
+#: includes/class.init.php:254
+#@ vibe
+msgid " subscribed for course "
+msgstr ""
+
+#: includes/class.init.php:254
+#@ vibe
+msgid " for "
+msgstr ""
+
+#: includes/class.init.php:288
+#: includes/class.init.php:302
+#@ wplms-mycred
+msgid "Instructor earned commission"
+msgstr ""
+
+#: includes/class.init.php:290
+#: includes/class.init.php:304
+#@ wplms-mycred
+msgid "Instructor earned commission for student purchasing the course via points "
+msgstr ""
+
+#: includes/class.init.php:328
+#@ vibe
+msgid "Set Course Points"
+msgstr ""
+
+#: includes/class.init.php:332
+#: includes/class.init.php:343
+#@ vibe
+msgid "Set Subscription"
+msgstr ""
+
+#: includes/class.init.php:335
+#@ vibe
+msgid "Full Course"
+msgstr ""
+
+#: includes/class.init.php:337
+#@ vibe
+msgid "Subscription"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:115
+#: includes/class.points-awarding-system.php:138
+#: includes/class.points-awarding-system.php:159
+#: includes/class.points-awarding-system.php:180
+#: includes/class.points-awarding-system.php:200
+#: includes/class.points-awarding-system.php:222
+#: includes/class.points-awarding-system.php:244
+#: includes/class.points-awarding-system.php:266
+#: includes/class.points-awarding-system.php:289
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:116
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points on starting %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:139
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points on finishing %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:160
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points fore getting marks more than %d in %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:181
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points fore getting marks less than %d in %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:201
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points fore getting marks qual to %d in %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:223
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points fore getting highest marks %d in %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:245
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points fore getting lowers marks %d in %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:267
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points for earning badges %d in %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:290
+#, php-format
+#@ wplms-mycred
+msgid "Student %s gained %s points for earning certificates %d in %s for points criteria %s"
+msgstr ""
+
+#: includes/class.points-awarding-system.php:331
+#@ vibe
+msgid "Add MyCred credits"
+msgstr ""
+
+#: includes/dashboard_widget.php:14
+#@ wplms-mycred
+msgid "MyCred Balance widget for Dashboard"
+msgstr ""
+
+#: includes/dashboard_widget.php:16
+#@ wplms-mycred
+msgid " DASHBOARD : MyCred Balance Widget"
+msgstr ""
+
+#: includes/dashboard_widget.php:81
+#: includes/dashboard_widget.php:242
+#@ wplms-mycred
+msgid "My Balance"
+msgstr ""
+
+#: includes/dashboard_widget.php:90
+#: includes/dashboard_widget.php:252
+#@ wplms-mycred
+msgid "Title:"
+msgstr ""
+
+#: includes/dashboard_widget.php:94
+#: includes/dashboard_widget.php:260
+#@ wplms-mycred
+msgid "Select Width"
+msgstr ""
+
+#: includes/dashboard_widget.php:96
+#: includes/dashboard_widget.php:262
+#@ wplms-mycred
+msgid "One Fourth"
+msgstr ""
+
+#: includes/dashboard_widget.php:97
+#: includes/dashboard_widget.php:263
+#@ wplms-mycred
+msgid "One Third"
+msgstr ""
+
+#: includes/dashboard_widget.php:98
+#: includes/dashboard_widget.php:264
+#@ wplms-mycred
+msgid "One Half"
+msgstr ""
+
+#: includes/dashboard_widget.php:99
+#: includes/dashboard_widget.php:265
+#@ wplms-mycred
+msgid "Two Third"
+msgstr ""
+
+#: includes/dashboard_widget.php:100
+#: includes/dashboard_widget.php:266
+#@ wplms-mycred
+msgid "Three Fourth"
+msgstr ""
+
+#: includes/dashboard_widget.php:101
+#: includes/dashboard_widget.php:267
+#@ wplms-mycred
+msgid "Full"
+msgstr ""
+
+#: includes/dashboard_widget.php:114
+#@ wplms-mycred
+msgid "MyCred Stats widget for Dashboard"
+msgstr ""
+
+#: includes/dashboard_widget.php:116
+#@ wplms-mycred
+msgid " DASHBOARD : MyCred Stats Widget"
+msgstr ""
+
+#: includes/dashboard_widget.php:183
+#@ wplms-dashboard
+msgid "Action"
+msgstr ""
+
+#: includes/dashboard_widget.php:183
+#@ wplms-dashboard
+msgid "Variation"
+msgstr ""
+
+#: includes/dashboard_widget.php:200
+#@ wplms-dashboard
+msgid "No data found"
+msgstr ""
+
+#: includes/dashboard_widget.php:256
+#@ wplms-mycred
+msgid "Number of Transactions :"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:89
+#: includes/myCRED-addon-wplms.php:95
+#: includes/myCRED-addon-wplms.php:101
+#: includes/myCRED-addon-wplms.php:145
+#@ wplms-mycred
+msgid "WPLMS Points"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:90
+#@ wplms-mycred
+msgid "WPLMS Point"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:91
+#@ wplms-mycred
+msgid "Create New"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:92
+#@ wplms-mycred
+msgid "Create New Points Awarding Criteria"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:93
+#@ wplms-mycred
+msgid "Edit Point"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:94
+#@ wplms-mycred
+msgid "New Point"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:97
+#@ wplms-mycred
+msgid "Search wplms points"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:98
+#@ wplms-mycred
+msgid "No wplms points found"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:99
+#@ wplms-mycred
+msgid "No wplms point found in Trash"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:122
+#: includes/myCRED-addon-wplms.php:125
+#@ wplms-mycred
+msgid "Points updated."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:127
+#@ wplms-mycred
+msgid "WPLMS Point published."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:128
+#@ wplms-mycred
+msgid "Point saved."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:131
+#@ wplms-mycred
+msgid "Draft Point saved."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:157
+#@ wplms-mycred
+msgid "# Times Awarded"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:158
+#@ wplms-mycred
+msgid "Criteria"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:205
+#@ wplms-mycred
+msgid "not yet awarded"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:215
+#@ wplms-mycred
+msgid "Not defined"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:255
+#@ wplms-mycred
+msgid "WPLMS Points Setup"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:264
+#@ wplms-mycred
+msgid "Criteria Usage Limits"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:273
+#@ wplms-mycred
+msgid "Points Awarding Criteria"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:308
+#@ wplms-mycred
+msgid "Value"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:311
+#, php-format
+#@ wplms-mycred
+msgid "The amount of %plural% this wplms is worth."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:314
+#@ wplms-mycred
+msgid "Point Type"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:315
+#@ wplms-mycred
+msgid "Select the point type that this wplms is applied."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:320
+#@ wplms-mycred
+msgid "Expire"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:323
+#@ wplms-mycred
+msgid "Optional date when this wplms points criteria expires. Expired WPLMS points criterias will be trashed."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:352
+#@ wplms-mycred
+msgid "Global Maximum"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:355
+#@ wplms-mycred
+msgid "The maximum number of times this points awarding criteria can be used. Note that the wplms points criteria will be automatically trashed once this maximum is reached!"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:359
+#@ wplms-mycred
+msgid "User Maximum"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:362
+#@ wplms-mycred
+msgid "The maximum number of times points can be awarded using this criteria to a single user."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:389
+#@ wplms-mycred
+msgid "WPLMS Module"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:392
+#@ wplms-mycred
+msgid "Course"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:393
+#@ wplms-mycred
+msgid "Unit"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:394
+#@ wplms-mycred
+msgid "Quiz"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:395
+#@ wplms-mycred
+msgid "Assignment"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:398
+#@ wplms-mycred
+msgid "Select module for the Points criteria."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:402
+#@ wplms-mycred
+msgid "Module ID"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:405
+#@ wplms-mycred
+msgid "Optional set this criteria for a specific module ID."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:409
+#@ wplms-mycred
+msgid "Module Criteria"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:412
+#@ wplms-mycred
+msgid "Started (No information required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:413
+#@ wplms-mycred
+msgid "Finished (No information required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:414
+#@ wplms-mycred
+msgid "Score Greater Than Equal to (Score required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:415
+#@ wplms-mycred
+msgid "Score Lesser than (Score required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:416
+#@ wplms-mycred
+msgid "Score Equals (Score required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:417
+#@ wplms-mycred
+msgid "Highest Marks in module (No information required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:418
+#@ wplms-mycred
+msgid "Lowest Marks in Module (No information required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:419
+#@ wplms-mycred
+msgid "Number of Badges earned (# Badges information required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:420
+#@ wplms-mycred
+msgid "Number of Certificates earned (# Certificates information required)"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:422
+#@ wplms-mycred
+msgid "Criteria specific information"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:424
+#@ wplms-mycred
+msgid "Set the Points criteria."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:476
+#@ wplms-mycred
+msgid "WPLMS"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:478
+#@ wplms-mycred
+msgid "Log Template"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:482
+#@ wplms-mycred
+msgid "Log entry for successful WPLMS Points criteria redemption."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:485
+#@ wplms-mycred
+msgid "Success Message"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:489
+#@ wplms-mycred
+msgid "Message to show when a user has successfully earned WPLMS Points."
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:492
+#@ wplms-mycred
+msgid "Referrals"
+msgstr ""
+
+#: includes/myCRED-addon-wplms.php:496
+#@ wplms-mycred
+msgid "Enter referral points when a user refers a new user."
+msgstr ""
+
+#: includes/referral.php:49
+#@ wplms-mycred
+msgid "Refer users to our website and earn points!"
+msgstr ""
+
+#: includes/referral.php:59
+#@ wplms-mycred
+msgid "Referral URL "
+msgstr ""
+
+#. translators: plugin header field 'Name'
+#: wplms-mycred-addon.php:0
+#@ wplms-mycred
+msgid "WPLMS MyCred ADDON"
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#. translators: plugin header field 'AuthorURI'
+#: wplms-mycred-addon.php:0
+#@ wplms-mycred
+msgid "http://www.vibethemes.com/"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: wplms-mycred-addon.php:0
+#@ wplms-mycred
+msgid "This plugin integrates MyCred points system with WPLMS theme"
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: wplms-mycred-addon.php:0
+#@ wplms-mycred
+msgid "Mr.Vibe"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: wplms-mycred-addon.php:0
+#@ wplms-mycred
+msgid "1.1"
+msgstr ""
+
