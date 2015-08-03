@@ -16,7 +16,7 @@ class wplms_points_init {
 		//add_filter( 'mycred_label', 'mycred_pro_relable_mycred' );
 		add_filter('mycred_setup_addons',array($this,'wplms_mycred_setup_addons'));
 		add_action('init',array($this,'wplms_mycred_custom_metabox'));
-		add_action('wplms_before_every_unit',array($this,'define_shortcode'));
+		
 		add_filter('wplms_course_credits_array',array($this,'wplms_course_credits_array'),10,2);
 		add_action('wplms_header_top_login',array($this,'wplms_mycred_show_points'));
 		add_filter('wplms_course_product_id',array($this,'wplms_mycred_take_this_course_label'));
@@ -24,12 +24,10 @@ class wplms_points_init {
 		add_action('wp_ajax_use_mycred_points',array($this,'use_mycred_points'));
 		add_action('wp_print_styles',array($this,'add_styles'));
 		add_action('wplms_front_end_pricing_content',array($this,'wplms_front_end_pricing'),10,1);
+		add_Action('wplms_course_pricing_save',array($this,'save_pricing'),10,2);
 		//add_action('wp_ajax_retake_inquiz',array($this,'custom_hook_quiz_retake'));
 	}
-	function define_shortcode(){
-		$myCRED_Sell_Content_Module = new myCRED_Sell_Content_Module();
-		add_shortcode('mycred_sell_this_ajax',array($myCRED_Sell_Content_Module,'render_ajax_shortcode'));
-	}
+
 	function mycred_pro_relable_mycred() {
 		return __('Points','wplms-mycred');
 	}
@@ -46,8 +44,8 @@ class wplms_points_init {
 			$balance = $mycred->get_users_cred( $user_id );
 			if($points_required <= $balance){
 				echo '<script>jQuery(document).ready(function($){
-					$(".course_button").addClass("hasmycredpoints");
-					$(".hasmycredpoints").click(function(event){
+					$(".course_button").attr("href","#hasmycredpoints");
+					$(".course_button[href=\'#hasmycredpoints\']").click(function(event){
 						event.preventDefault();
 						$(this).addClass("loader");
 						$.ajax({
@@ -370,6 +368,18 @@ class wplms_points_init {
 
 	    do_action('mycred_quiz_retakes',$quiz_id,$count_retakes);
 		die();
+	}
+
+	function save_pricing($course_id,$pricing){
+		
+        if(isset($pricing->vibe_mycred_points) && is_numeric($pricing->vibe_mycred_points)){ echo '###';
+            update_post_meta($course_id,'vibe_mycred_points',$pricing->vibe_mycred_points);
+            update_post_meta($course_id,'vibe_mycred_subscription',$pricing->vibe_mycred_subscription);
+            update_post_meta($course_id,'vibe_mycred_duration',$pricing->vibe_mycred_duration);
+            do_action('wplms_course_pricing_mycred_updated',$course_id,$pricing->vibe_mycred_points,$pricing->vibe_mycred_subscription,$pricing->vibe_mycred_duration);
+        }else{
+        	delete_post_meta($course_id,'vibe_mycred_points');
+        }
 	}
 }
 
