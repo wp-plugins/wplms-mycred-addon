@@ -236,23 +236,13 @@ class wplms_points_init {
 
 		$subscription = get_post_meta($course_id,'vibe_mycred_subscription',true);
 		if(isset($subscription) && $subscription && $subscription !='H'){
-			$duration = get_post_meta($course_id,'vibe_mycred_duration',true);
-			if(!isset($duration) || !$duration){
-				_e('Please set subscription duration or disable subscription','wplms-mycred');
-				die();
-			}
-			$duration_parameter=$this->subscription_duration_parameter;
-			$expiry = $time+$duration*$duration_parameter;
-			update_user_meta($user_id,$course_id,$expiry);
-			update_post_meta($course_id,$user_id,0);
-		}else{
-			$duration = get_post_meta($course_id,'vibe_duration',true);
-			$duration_parameter = apply_filters('vibe_course_duration_parameter',86400);
 
-			$expiry = $time+$duration*$duration_parameter;
-			update_user_meta($user_id,$course_id,$expiry);
-			update_post_meta($course_id,$user_id,0);
-		}
+			$duration = get_post_meta($course_id,'vibe_mycred_duration',true);
+			bp_course_add_user_to_course($user_id,$course_id,$duration);
+
+		}else{
+			bp_course_add_user_to_course($user_id,$course_id);
+		}	
 
 		$mycred->update_users_balance( $user_id, $deduct);
 		$mycred->add_to_log('take_course',
@@ -321,6 +311,7 @@ class wplms_points_init {
 					);
 	    	}
 		} // End Commissions_array 
+
 
         do_action('wplms_course_mycred_points_puchased',$course_id,$user_id,$points);
         die();
