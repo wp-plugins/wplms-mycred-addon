@@ -3,7 +3,7 @@ Contributors: vibethemes
 Tags: MyCred, Points system, Learning management, LMS, courses
 Requires at least: 3.6
 Tested up to: 4.2.2
-Stable tag: 1.3.4
+Stable tag: 1.0 
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,9 +65,6 @@ Report bugs, suggest ideas, and participate in development at <a href="https://v
 
 
 == Upgrade Notice ==
-= 1.3.4 =
-Fixes for WPLMS version 1.9.8+
-
 = 1.2 =
 Fixes for WPLMS version 1.9.6+
 
