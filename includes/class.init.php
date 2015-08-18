@@ -44,7 +44,10 @@ class wplms_points_init {
 			$balance = $mycred->get_users_cred( $user_id );
 			if($points_required <= $balance){
 				echo '<script>jQuery(document).ready(function($){
-					$(".course_button").attr("href","#hasmycredpoints");
+					if(!$("ul.pricing_course").length){
+						$(".course_button").attr("href","#hasmycredpoints");	
+					}
+					
 					$(".course_button[href=\'#hasmycredpoints\']").click(function(event){
 						event.preventDefault();
 						$(this).addClass("loader");
@@ -158,7 +161,7 @@ class wplms_points_init {
 		$points=get_post_meta($course_id,'vibe_mycred_points',true);
 		if(isset($points) && is_numeric($points)){
 			$mycred = mycred();
-			$points_html='<strong>'.$mycred->format_creds($points);
+			$points_html ='<strong>'.$mycred->format_creds($points);
 			$subscription = get_post_meta($course_id,'vibe_mycred_subscription',true);
 			if(isset($subscription) && $subscription && $subscription !='H'){
 				$duration = get_post_meta($course_id,'vibe_mycred_duration',true);
@@ -168,7 +171,7 @@ class wplms_points_init {
 					$points_html .= ' <span class="subs"> '.__('per','vibe').' '.tofriendlytime($duration).'</span>';
 			}
 			$points_html .='</strong>';
-			$price_html[]=$points_html;
+			$price_html['#hasmycredpoints']=$points_html;
 		}
 		return $price_html;
 	}
@@ -236,7 +239,7 @@ class wplms_points_init {
 		if(isset($subscription) && $subscription && $subscription !='H'){
 
 			$duration = get_post_meta($course_id,'vibe_mycred_duration',true);
-			
+
 		    $course_duration_parameter = apply_filters('vibe_course_duration_parameter',86400);
 		    
 		    $start_date = get_post_meta($course,'vibe_start_date',true);
@@ -441,7 +444,7 @@ class wplms_points_init {
 
 	function save_pricing($course_id,$pricing){
 		
-        if(isset($pricing->vibe_mycred_points) && is_numeric($pricing->vibe_mycred_points)){ echo '###';
+        if(isset($pricing->vibe_mycred_points) && is_numeric($pricing->vibe_mycred_points)){
             update_post_meta($course_id,'vibe_mycred_points',$pricing->vibe_mycred_points);
             update_post_meta($course_id,'vibe_mycred_subscription',$pricing->vibe_mycred_subscription);
             update_post_meta($course_id,'vibe_mycred_duration',$pricing->vibe_mycred_duration);
