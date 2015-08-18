@@ -236,10 +236,79 @@ class wplms_points_init {
 		if(isset($subscription) && $subscription && $subscription !='H'){
 
 			$duration = get_post_meta($course_id,'vibe_mycred_duration',true);
-			bp_course_add_user_to_course($user_id,$course_id,$duration);
+			
+		    $course_duration_parameter = apply_filters('vibe_course_duration_parameter',86400);
+		    
+		    $start_date = get_post_meta($course,'vibe_start_date',true);
+		    $time=0;
 
+		    if(isset($start_date) && $start_date){
+		      $time=strtotime($start_date);
+		    }
+		    if($time<time())
+		      $time=time();
+
+		    $t=$time+$duration*$course_duration_parameter;
+
+		    update_post_meta($course_id,$user_id,0);
+		  
+		    $existing = get_user_meta($user_id,$course_id,true);
+		    if(empty($existing)){
+		      update_user_meta($user_id,'course_status'.$course_id,1);
+		      $students++;
+		      update_post_meta($course_id,'vibe_students',$students);
+		    }else{
+		      update_user_meta($user_id,'course_status'.$course_id,2);
+		    }
+
+		    update_user_meta($user_id,$course_id,$t);
+
+		    $group_id=get_post_meta($course_id,'vibe_group',true);
+		    if(isset($group_id) && $group_id !='')
+		      groups_join_group($group_id, $user_id );  
+		    else
+		      $group_id ='';
+
+		    
+		    do_action('wplms_course_subscribed',$course_id,$user_id,$group_id);
 		}else{
-			bp_course_add_user_to_course($user_id,$course_id);
+			if(empty($duration))
+		      $duration=get_post_meta($course_id,'vibe_duration',true);
+		    
+		    $course_duration_parameter = apply_filters('vibe_course_duration_parameter',86400);
+		    
+		    $start_date = get_post_meta($course,'vibe_start_date',true);
+		    $time=0;
+
+		    if(isset($start_date) && $start_date){
+		      $time=strtotime($start_date);
+		    }
+		    if($time<time())
+		      $time=time();
+
+		    $t=$time+$duration*$course_duration_parameter;
+
+		    update_post_meta($course_id,$user_id,0);
+		  
+		    $existing = get_user_meta($user_id,$course_id,true);
+		    if(empty($existing)){
+		      update_user_meta($user_id,'course_status'.$course_id,1);
+		      $students++;
+		      update_post_meta($course_id,'vibe_students',$students);
+		    }else{
+		      update_user_meta($user_id,'course_status'.$course_id,2);
+		    }
+
+		    update_user_meta($user_id,$course_id,$t);
+
+		    $group_id=get_post_meta($course_id,'vibe_group',true);
+		    if(isset($group_id) && $group_id !='')
+		      groups_join_group($group_id, $user_id );  
+		    else
+		      $group_id ='';
+
+		    
+		    do_action('wplms_course_subscribed',$course_id,$user_id,$group_id);
 		}	
 
 		$mycred->update_users_balance( $user_id, $deduct);
