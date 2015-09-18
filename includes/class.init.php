@@ -45,11 +45,8 @@ class wplms_points_init {
 			$balance = $mycred->get_users_cred( $user_id );
 			if($points_required <= $balance){
 				echo '<script>jQuery(document).ready(function($){
-					if(!$("ul.pricing_course").length){
-						$(".course_button").attr("href","#hasmycredpoints");	
-					}
-					
-					$(".course_button[href=\'#hasmycredpoints\']").click(function(event){
+
+					$( "body" ).delegate( ".course_button[href=\'#hasmycredpoints\']", "click", function(event){
 						event.preventDefault();
 						$(this).addClass("loader");
 						$.ajax({
@@ -64,7 +61,7 @@ class wplms_points_init {
 		                    	console.log(html);
 		                        $(this).removeClass("loader");
 		                        $(this).html(html);
-		                        setTimeout(function(){window.location.assign(document.URL);}, 2000);
+		                        setTimeout(function(){location.reload();}, 2000);
 		                    }
 		            });
 						return false;
