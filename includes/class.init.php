@@ -25,6 +25,7 @@ class wplms_points_init {
 		add_action('wp_print_styles',array($this,'add_styles'));
 		add_action('wplms_front_end_pricing_content',array($this,'wplms_front_end_pricing'),10,1);
 		add_Action('wplms_course_pricing_save',array($this,'save_pricing'),10,2);
+		add_action('lms_general_settings',array($this,'add_buy_points_setting'));
 		//add_action('wp_ajax_retake_inquiz',array($this,'custom_hook_quiz_retake'));
 	}
 
@@ -170,8 +171,18 @@ class wplms_points_init {
 				if(function_exists('tofriendlytime'))
 					$points_html .= ' <span class="subs"> '.__('per','vibe').' '.tofriendlytime($duration).'</span>';
 			}
+			$key = '#hasmycredpoints';
 			$points_html .='</strong>';
-			$price_html['#hasmycredpoints']=$points_html;
+			if(is_user_logged_in()){
+				$user_id = get_current_user_id();
+				$balance = $mycred->get_users_cred( $user_id );
+				if($balance < $points){
+					$key = '?error=insufficient';
+				}
+			}else{
+				$key = '?error=login';
+			}
+			$price_html[$key]=$points_html;
 		}
 		return $price_html;
 	}
@@ -190,8 +201,22 @@ class wplms_points_init {
 		}
 		return $link;
 	}
+	function add_buy_points_setting($settings){
+		$settings[] = array(
+				'label' => __('Buy Points Link','vibe-customtypes'),
+				'name' =>'mycred_buy_points',
+				'type' => 'textbox',
+				'desc' => __('Buy Points for MyCred, displayed when user points are less than required','wplms-mycred')
+			);
+		return $settings;
+	}
 	function wplms_get_mycred_purchase_points(){
-		$link='#';
+		$settings = get_option('lms_settings');
+		if(!empty($settings['general']['mycred_buy_points'])){
+			$link = $settings['general']['mycred_buy_points'];
+		}else
+			$link='#';
+			
 		return $link;
 	}
 	function get_wplms_mycred_points() {
