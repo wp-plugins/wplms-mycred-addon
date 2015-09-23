@@ -19,7 +19,7 @@ class wplms_points_init {
 		
 		add_filter('wplms_course_credits_array',array($this,'wplms_course_credits_array'),10,2);
 		add_action('wplms_header_top_login',array($this,'wplms_mycred_show_points'));
-		add_filter('wplms_course_product_id',array($this,'wplms_mycred_take_this_course_label'));
+		add_filter('wplms_course_product_id',array($this,'wplms_mycred_take_this_course_label'),9);
 		add_action('wplms_course_before_front_main',array($this,'wplms_error_message_handle'));
 		add_action('wp_ajax_use_mycred_points',array($this,'use_mycred_points'));
 		add_action('wp_print_styles',array($this,'add_styles'));
@@ -69,9 +69,14 @@ class wplms_points_init {
 				});</script>
 				'.wp_nonce_field('security'.$user_id,'security').'
 				';
-				return '#';
+				return '#hasmycredpoints';
 			}else{	
 				if(is_numeric($x)){
+					if ( FALSE === get_post_status( $x ) ) {
+					  return '?error=insufficient';
+					} else {
+					  return $x;
+					}
 					return $x;
 				}else{
 					return '?error=insufficient';

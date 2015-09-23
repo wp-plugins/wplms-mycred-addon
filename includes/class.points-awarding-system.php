@@ -4,24 +4,29 @@ class points_awarding_system {
 
 	public $action_hooks=array(
 		'course' => array(	
-			'started'=>'badgeos_wplms_start_course', // $course_id
-			'finished'=>'badgeos_wplms_submit_course',// $course_id
-			'score'=>'badgeos_wplms_evaluate_course',//$course_id,$marks,$user_id
+			'subscribed' => 'wplms_course_subscribed',// $course_id
+			'started'=>'wplms_start_course', // $course_id
+			'finished'=>'wplms_submit_course',// $course_id
+			'score'=>'wplms_evaluate_course',//$course_id,$marks,$user_id
 			'badges_earned'=>'wplms_badge_earned',//$course_id,$badges,$user_id
 			'certificates_earned'=>'wplms_certificate_earned',//$course_id,$certificates,$user_id
+			'course_review'=>'wplms_course_review',
+			'course_unsubscribe'=>'wplms_course_unsubscribe',
+			'course_retake'=>'wplms_course_retake'
 			),
 		'quiz' => array(
-			'started'=>'badgeos_wplms_start_quiz', //$quiz_id
-			'finished'=>'badgeos_wplms_submit_quiz', //$quiz_id
-			'score'=>'badgeos_wplms_evaluate_quiz',//$quiz_id,$marks,$user_id
+			'started'=>'wplms_start_quiz', //$quiz_id
+			'finished'=>'wplms_submit_quiz', //$quiz_id
+			'score'=>'wplms_evaluate_quiz',//$quiz_id,$marks,$user_id
+			'quiz_retake'=>'wplms_quiz_retake'
 			),
 		'assignment' => array(
-			'started'=>'badgeos_wplms_start_assignment', //$assignment_id,$marks, $user_id
-			'finished'=>'badgeos_wplms_submit_assignment', //$assignment_id,$marks, $user_id
-			'score'=>'badgeos_wplms_evaluate_assignment',// $assignment_id,$marks, $user_id
+			'started'=>'wplms_start_assignment', //$assignment_id,$marks, $user_id
+			'finished'=>'wplms_submit_assignment', //$assignment_id,$marks, $user_id
+			'score'=>'wplms_evaluate_assignment',// $assignment_id,$marks, $user_id
 			),
 		'unit' => array(
-			'finished'=>'badgeos_wplms_unit_complete',
+			'finished'=>'wplms_unit_complete',
 			));
 	function __construct(){
 
@@ -85,7 +90,7 @@ class points_awarding_system {
 			//echo '#4';
 			$operator = get_post_meta($point_criteria_id,'wplms_module_score_operator',true);
 			
-			if($current_hook == 'badgeos_wplms_unit_complete' || !isset($user_id)){
+			if($current_hook == 'wplms_unit_complete' || !isset($user_id)){
 				$user_id = get_current_user_id();
 			}
 			if(isset($operator) && $operator)
@@ -112,7 +117,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points on starting %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 		}
@@ -135,7 +140,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points on finishing %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 		}
@@ -156,7 +161,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points fore getting marks more than %d in %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 		}
@@ -177,7 +182,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points fore getting marks less than %d in %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 		}
@@ -197,7 +202,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points fore getting marks qual to %d in %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 		}
@@ -219,7 +224,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points fore getting highest marks %d in %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 		}
@@ -241,7 +246,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points fore getting lowers marks %d in %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 		}
@@ -263,7 +268,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points for earning badges %d in %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 			}
@@ -286,7 +291,7 @@ class points_awarding_system {
 				'id'=>$id,
 				'amount' => $value,
 				'module'=>$module,
-				'log_entry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
+				'logentry'=> sprintf(__('Student %s gained %s points','wplms-mycred'),bp_core_get_userlink($user_id),$value),
 				'message' => sprintf(__('Student %s gained %s points for earning certificates %d in %s for points criteria %s','wplms-mycred'),bp_core_get_userlink($user_id),$value,get_the_title($id),get_the_title($point_criteria_id))
 				));
 			}
@@ -299,9 +304,9 @@ class points_awarding_system {
 			'user_id'=>get_current_user_id(),
 			'module'=>'course',
 			'amount'=>0,
-			'logentry'=>'Started Course',
+			'logentry'=>__('Started Course','wplms-mycred'),
 			'id'=>0,
-			'message'=>'Student Started course'
+			'message'=>__('Student Started course','wplms-mycred')
 			);
 
 		$r = wp_parse_args( $args, $defaults );
