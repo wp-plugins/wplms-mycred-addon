@@ -1,11 +1,9 @@
-.course_button.hasmycredpoints{
 
-}
-.course_button.hasmycredpoints.loader{
+.course_button.loader{
 -webkit-transition: all 0.3s ease-in-out 0s;
 transition: all 0.3s ease-in-out 0s;
 }
-.course_button.hasmycredpoints.loader:before {
+.course_button.loader:before {
 	content:'';
 	position: absolute;
 	left:0;
@@ -14,7 +12,7 @@ transition: all 0.3s ease-in-out 0s;
 	height:100%;
 	background:rgba(0,0,0,0.4);
 }
-.course_button.hasmycredpoints.loader:after {
+.course_button.loader:after {
 content: "\e1d1";
 color: #FFF;
 font-family: 'fonticon';

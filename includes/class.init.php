@@ -15,7 +15,7 @@ class wplms_points_init {
 		
 		//add_filter( 'mycred_label', 'mycred_pro_relable_mycred' );
 		add_filter('mycred_setup_addons',array($this,'wplms_mycred_setup_addons'));
-		add_action('init',array($this,'wplms_mycred_custom_metabox'));
+		add_filter('wplms_course_product_metabox',array($this,'wplms_mycred_custom_metabox'));
 		
 		add_filter('wplms_course_credits_array',array($this,'wplms_course_credits_array'),10,2);
 		add_action('wplms_header_top_login',array($this,'wplms_mycred_show_points'));
@@ -48,17 +48,20 @@ class wplms_points_init {
 
 					$( "body" ).delegate( ".course_button[href=\'#hasmycredpoints\']", "click", function(event){
 						event.preventDefault();
+						
+						if($(this).hasClass("loader"))
+							return;
+
 						$(this).addClass("loader");
 						$.ajax({
 		                    type: "POST",
 		                    url: ajaxurl,
 		                    data: { action: "use_mycred_points", 
-		                            security: $("#security").val(),
+		                            security: $("#wplms_mycred_security").val(),
 		                            id: '.$post->ID.'
 		                          },
 		                    cache: false,
 		                    success: function (html) {
-		                    	console.log(html);
 		                        $(this).removeClass("loader");
 		                        $(this).html(html);
 		                        setTimeout(function(){location.reload();}, 2000);
@@ -67,7 +70,7 @@ class wplms_points_init {
 						return false;
 					});
 				});</script>
-				'.wp_nonce_field('security'.$user_id,'security').'
+				'.wp_nonce_field('security'.$user_id,'wplms_mycred_security').'
 				';
 				return '#hasmycredpoints';
 			}else{	
@@ -118,22 +121,22 @@ class wplms_points_init {
 	}
 
 
-	function wplms_mycred_custom_metabox(){
+	function wplms_mycred_custom_metabox($metabox){
 		$prefix = 'vibe_';
 		if(function_exists('calculate_duration_time')){
 			$parameter = calculate_duration_time($this->subscription_duration_parameter);
 		}else
 			$parameter = 'DAYS';
 
-		$mycred_metabox = array(  
-			array( // Text Input
+		$mycred_metabox = apply_filters('wplms_mycred_metabox',array(  
+			$prefix.'mycred_points' => array( // Text Input
 				'label'	=> __('MyCred Points','vibe-customtypes'), // <label>
 				'desc'	=> __('MyCred Points required to take this course.','vibe-customtypes'),
 				'id'	=> $prefix.'mycred_points', // field id and name
 				'type'	=> 'number' // type of field
 			),
-		    array( // Text Input
-				'label'	=> __('Subscription ','vibe-customtypes'), // <label>
+		    $prefix.'mycred_subscription' => array( // Text Input
+				'label'	=> __('MyCred Subscription ','vibe-customtypes'), // <label>
 				'desc'	=> __('Enable subscription mode for this Course','vibe-customtypes'), // description
 				'id'	=> $prefix.'mycred_subscription', // field id and name
 				'type'	=> 'showhide', // type of field
@@ -145,20 +148,18 @@ class wplms_points_init {
 		        ),
 		                'std'   => 'H'
 			),
-		    array( // Text Input
+		     $prefix.'mycred_duration' => array( // Text Input
 				'label'	=> __('Subscription Duration','vibe-customtypes'), // <label>
 				'desc'	=> __('Duration for Subscription Products (in ','vibe-customtypes').$parameter.')', // description
 				'id'	=> $prefix.'mycred_duration', // field id and name
 				'type'	=> 'number' // type of field
 			),
-		);
-
-		$mycred_metabox = apply_filters('wplms_mycred_metabox',$mycred_metabox);
-
-		if(class_exists('custom_add_meta_box')){
-			$mycred_box = new custom_add_meta_box( 'mycred-settings', __('MyCred Points','vibe-customtypes'), $mycred_metabox, 'course', true );
-		}
+		));
+		
+		$metabox = array_merge($metabox,$mycred_metabox);
+		return $metabox;
 	}
+
 	function wplms_course_credits_array($price_html,$course_id){
 
 		$points=get_post_meta($course_id,'vibe_mycred_points',true);

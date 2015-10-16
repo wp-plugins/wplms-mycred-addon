@@ -3,7 +3,7 @@
 Plugin Name: WPLMS MyCred ADDON
 Plugin URI: http://www.vibethemes.com/
 Description: This plugin integrates MyCred points system with WPLMS theme
-Version: 1.3.6
+Version: 1.3.7
 Author: Mr.Vibe
 Author URI: http://www.vibethemes.com/
 Text Domain: wplms-mycred
